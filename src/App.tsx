@@ -64,7 +64,6 @@ const App = () => {
       content: content,
     };
 
-    //TODO: get rid of iterating over whole notes list
     const updatedNotesList = notes.map((note) => note.id == selectedNote.id ? updatedNote : note);
 
     setNotes(updatedNotesList);
@@ -72,6 +71,14 @@ const App = () => {
     setContent("");
     setSelectedNote(null);
   };
+
+  const handleDeleteNote = (event: React.MouseEvent, noteId: number) => {
+    event.stopPropagation();
+
+    const updatedNotes = notes.filter((note) => note.id !== noteId);
+
+    setNotes(updatedNotes);
+  }
 
   const handleCancel = () => {
       setTitle("");
@@ -121,7 +128,7 @@ const App = () => {
         {notes.map((note)=> (
           <div key={note.id} className="notes-item" onClick={() => handleNoteClick(note)}>
           <div className="notes-header">
-            <button>x</button>
+            <button onClick={(event) => handleDeleteNote(event, note.id)}>x</button>
           </div>
           <h2>{note.title}</h2>
           <p>{note.content}</p>
