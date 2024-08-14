@@ -22,7 +22,7 @@ body{
     gap: 20px;
 }
 
-.note-item{
+.notes-item{
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
