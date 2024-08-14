@@ -64,7 +64,6 @@ const App = () => {
       content: content,
     };
 
-    //TODO: get rid of iterating over whole notes list
     const updatedNotesList = notes.map((note) => note.id == selectedNote.id ? updatedNote : note);
 
     setNotes(updatedNotesList);
